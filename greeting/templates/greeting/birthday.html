@@ -477,5 +477,191 @@
             '#48dbfb',
             '#ff9ff3',
             '#1dd1a1',
-            '#5f2
+            '#5f27cd',
+            '#ff9f43'
+        ];
+
+
+        function launchConfetti() {
+
+            const container =
+                document.getElementById('confetti');
+
+            for (let i = 0; i < 80; i++) {
+
+                const confetti =
+                    document.createElement('div');
+
+                confetti.className = 'confetti';
+
+                confetti.style.left =
+                    Math.random() * 100 + '%';
+
+                confetti.style.backgroundColor =
+                    colors[
+                        Math.floor(
+                            Math.random() * colors.length
+                        )
+                    ];
+
+                confetti.style.animationDuration =
+                    (Math.random() * 2 + 2) + 's';
+
+                confetti.style.animationDelay =
+                    Math.random() * 0.5 + 's';
+
+                confetti.style.borderRadius =
+                    Math.random() > 0.5
+                        ? '50%'
+                        : '2px';
+
+                confetti.style.width =
+                    (Math.random() * 10 + 6) + 'px';
+
+                confetti.style.height =
+                    (Math.random() * 10 + 6) + 'px';
+
+                container.appendChild(confetti);
+
+                setTimeout(
+                    () => confetti.remove(),
+                    4000
+                );
+            }
+        }
+
+
+        // Balloonlar
+        const balloonColors = [
+            '#ff6b6b',
+            '#feca57',
+            '#48dbfb',
+            '#ff9ff3',
+            '#1dd1a1',
+            '#5f27cd'
+        ];
+
+
+        function launchBalloons() {
+
+            const container =
+                document.getElementById('balloons');
+
+            for (let i = 0; i < 12; i++) {
+
+                const balloon =
+                    document.createElement('div');
+
+                balloon.className = 'balloon';
+
+                balloon.style.left =
+                    Math.random() * 90 + 5 + '%';
+
+                balloon.style.backgroundColor =
+                    balloonColors[
+                        Math.floor(
+                            Math.random() *
+                            balloonColors.length
+                        )
+                    ];
+
+                balloon.style.animationDuration =
+                    (Math.random() * 4 + 8) + 's';
+
+                balloon.style.animationDelay =
+                    Math.random() * 1.5 + 's';
+
+                balloon.style.width =
+                    (Math.random() * 20 + 50) + 'px';
+
+                balloon.style.height =
+                    (Math.random() * 25 + 65) + 'px';
+
+                container.appendChild(balloon);
+
+                setTimeout(
+                    () => balloon.remove(),
+                    14000
+                );
+            }
+        }
+
+
+        // Musiqa
+        let isPlaying = false;
+
+        const audio =
+            document.getElementById('bgMusic');
+
+        const musicBtn =
+            document.getElementById('musicBtn');
+
+
+        function toggleMusic() {
+
+            if (isPlaying) {
+
+                audio.pause();
+
+                musicBtn.innerHTML =
+                    '🎵 Musiqa';
+
+                document.body.classList.remove(
+                    'music-playing'
+                );
+
+            } else {
+
+                audio.play()
+                    .then(() => {
+
+                        musicBtn.innerHTML =
+                            '⏸️ To\'xtatish';
+
+                        document.body.classList.add(
+                            'music-playing'
+                        );
+
+                    })
+                    .catch(() => {
+
+                        alert(
+                            "Musiqani ijro etish uchun tugmani yana bir marta bosing."
+                        );
+
+                    });
+
+                return;
+            }
+
+            isPlaying = false;
+        }
+
+
+        // Sahifa yuklanganda
+        window.addEventListener('load', () => {
+
+            createStars();
+
+            setTimeout(
+                launchConfetti,
+                800
+            );
+
+            setTimeout(
+                launchBalloons,
+                1500
+            );
+
+            setInterval(
+                launchConfetti,
+                8000
+            );
+
+        });
+
+    </script>
+
+</body>
+</html>
 ```
